@@ -2,7 +2,7 @@ package com.ajithvgiri.nasa.data.model
 
 import java.io.Serializable
 
-data class PhotoDetails(
+data class Photos(
     var copyright: String,
     var date: String,
     var explanation: String,
