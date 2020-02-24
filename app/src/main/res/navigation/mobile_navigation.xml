@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.ajithvgiri.nasa.ui.home.ImageGridFragment"
+        android:name="com.ajithvgiri.nasa.ui.home.PhotosFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_image_grid">
+        tools:layout="@layout/fragment_photos">
 
         <action
             android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
