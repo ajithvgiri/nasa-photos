@@ -12,7 +12,7 @@ import com.ajithvgiri.nasa.R
 import com.ajithvgiri.nasa.adapter.PhotosAdapter
 import kotlinx.android.synthetic.main.fragment_photos.*
 
-class PhotosFragment : Fragment() {
+class PhotosFragment : Fragment(),OnItemClickListener {
 
     private lateinit var photosViewModel: PhotosViewModel
     private lateinit var photosAdapter: PhotosAdapter
@@ -28,7 +28,7 @@ class PhotosFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        photosAdapter = PhotosAdapter()
+        photosAdapter = PhotosAdapter(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,6 +45,10 @@ class PhotosFragment : Fragment() {
                     photosAdapter.addPhotos(listOfPhotos)
                 }
         })
+    }
+
+    override fun getItemImage(view: View, position: Int) {
+
     }
 
 }
