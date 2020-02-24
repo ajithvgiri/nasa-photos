@@ -1,4 +1,4 @@
-package com.ajithvgiri.nasa.data
+package com.ajithvgiri.nasa.data.model
 
 import java.io.Serializable
 
