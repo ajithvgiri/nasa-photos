@@ -11,9 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
-import com.ajithvgiri.nasa.MainActivity
 import com.ajithvgiri.nasa.R
 import com.ajithvgiri.nasa.adapter.PhotoPagerAdapter
+import com.ajithvgiri.nasa.ui.MainActivity
 import com.ajithvgiri.nasa.ui.home.PhotosViewModel
 import kotlinx.android.synthetic.main.fragment_photo_fullscreen.*
 
@@ -28,6 +28,7 @@ class PhotoFullScreenFragment : Fragment() {
         super.onCreate(savedInstanceState)
         sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
         photoPagerAdapter = PhotoPagerAdapter()
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -43,6 +44,7 @@ class PhotoFullScreenFragment : Fragment() {
         viewpager.adapter = photoPagerAdapter
 
         (activity as MainActivity).supportActionBar?.title = ""
+        (activity as MainActivity).supportActionBar?.setDisplayShowHomeEnabled(true)
 
         photosViewModel.listOfPhotos.observe(viewLifecycleOwner, Observer {
             it?.let {
