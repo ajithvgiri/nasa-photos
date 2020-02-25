@@ -51,10 +51,10 @@ class PhotosFragment : Fragment(),OnItemClickListener {
         })
     }
 
-    override fun getItemImage(view: View,photos: Photos,position: Int) {
+    override fun getItemImage(view: View,position: Int) {
         val extras = FragmentNavigator.Extras.Builder().addSharedElement(view as ImageView, "title_${position}").build()
         //val action = PhotosFragmentDirections.actionHomeFragmentToHomeSecondFragment("From PhotosFragment $position")
-        val action = PhotosFragmentDirections.actionHomeFragmentToDashboardFragment(position,photos)
+        val action = PhotosFragmentDirections.actionHomeFragmentToDashboardFragment(position)
         NavHostFragment.findNavController(this@PhotosFragment).navigate(action,extras)
     }
 

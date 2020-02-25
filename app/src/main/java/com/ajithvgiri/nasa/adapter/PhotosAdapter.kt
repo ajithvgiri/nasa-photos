@@ -35,7 +35,7 @@ class PhotosAdapter(var onItemClickListener: OnItemClickListener) : RecyclerView
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as ImageGridViewHolder).bind(listOfPhotos[position],position){view->
-            onItemClickListener.getItemImage(view,listOfPhotos[position],position)
+            onItemClickListener.getItemImage(view,position)
         }
     }
 

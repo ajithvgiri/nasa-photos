@@ -2,11 +2,13 @@ package com.ajithvgiri.nasa.ui.fullscreen
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
 import com.ajithvgiri.nasa.MainActivity
@@ -40,7 +42,7 @@ class PhotoFullScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewpager.adapter = photoPagerAdapter
 
-        (activity as MainActivity).supportActionBar?.title = args.photo.title
+        (activity as MainActivity).supportActionBar?.title = ""
 
         photosViewModel.listOfPhotos.observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -48,5 +50,12 @@ class PhotoFullScreenFragment : Fragment() {
                 viewpager.setCurrentItem(args.position,false)
             }
         })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (android.R.id.home == item.itemId){
+            NavHostFragment.findNavController(this).popBackStack()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

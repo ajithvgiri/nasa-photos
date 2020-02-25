@@ -44,14 +44,12 @@
     <fragment
         android:id="@+id/navigation_photo_fullscreen"
         android:name="com.ajithvgiri.nasa.ui.fullscreen.PhotoFullScreenFragment"
+        android:label=""
         tools:layout="@layout/fragment_photo_fullscreen">
 
         <argument
             android:name="position"
             app:argType="integer" />
-        <argument
-            android:name="photo"
-            app:argType="com.ajithvgiri.nasa.data.model.Photos" />
     </fragment>
 
 </navigation>
