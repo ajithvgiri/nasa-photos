@@ -25,12 +25,11 @@ class PhotoPagerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as ImageGridViewHolder).bind(listOfPhotos[position],position){view->
-        }
+        (holder as ImageGridViewHolder).bind(listOfPhotos[position],position)
     }
 
     class ImageGridViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        fun bind(photo: Photos, position: Int, onItemClick: (view:View) -> Unit){
+        fun bind(photo: Photos, position: Int){
             itemView.imageView.loadImage(photo.hdurl,photo.url)
             itemView.textViewDate.text = photo.date
             itemView.textViewCopyRight.text = if (photo.copyright.isNullOrEmpty()){
@@ -40,10 +39,6 @@ class PhotoPagerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
             }
             itemView.textViewTitle.text = photo.title
             itemView.textViewExplanation.text = photo.explanation
-            itemView.pager.setOnClickListener {
-                ViewCompat.setTransitionName(itemView.imageView, "title_${position}")
-                onItemClick.invoke(itemView.imageView)
-            }
         }
     }
 
