@@ -9,13 +9,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
+import com.ajithvgiri.nasa.MainActivity
 import com.ajithvgiri.nasa.R
 import com.ajithvgiri.nasa.adapter.PhotoPagerAdapter
-import com.ajithvgiri.nasa.ui.home.OnItemClickListener
 import com.ajithvgiri.nasa.ui.home.PhotosViewModel
 import kotlinx.android.synthetic.main.fragment_photo_fullscreen.*
 
-class PhotoFullScreenFragment : Fragment(),OnItemClickListener {
+class PhotoFullScreenFragment : Fragment() {
 
     private val args: PhotoFullScreenFragmentArgs by navArgs()
 
@@ -40,15 +40,13 @@ class PhotoFullScreenFragment : Fragment(),OnItemClickListener {
         super.onViewCreated(view, savedInstanceState)
         viewpager.adapter = photoPagerAdapter
 
+        (activity as MainActivity).supportActionBar?.title = args.photo.title
+
         photosViewModel.listOfPhotos.observe(viewLifecycleOwner, Observer {
             it?.let {
                 photoPagerAdapter.addPhotos(it)
-                viewpager.setCurrentItem(args.imagePosition,false)
+                viewpager.setCurrentItem(args.position,false)
             }
         })
-    }
-
-    override fun getItemImage(view: View, position: Int) {
-
     }
 }

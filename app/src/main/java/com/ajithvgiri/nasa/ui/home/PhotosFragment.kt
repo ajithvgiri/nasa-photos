@@ -13,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ajithvgiri.nasa.R
 import com.ajithvgiri.nasa.adapter.PhotosAdapter
+import com.ajithvgiri.nasa.data.model.Photos
 import kotlinx.android.synthetic.main.fragment_photos.*
 
 class PhotosFragment : Fragment(),OnItemClickListener {
@@ -50,10 +51,10 @@ class PhotosFragment : Fragment(),OnItemClickListener {
         })
     }
 
-    override fun getItemImage(view: View,position: Int) {
+    override fun getItemImage(view: View,photos: Photos,position: Int) {
         val extras = FragmentNavigator.Extras.Builder().addSharedElement(view as ImageView, "title_${position}").build()
         //val action = PhotosFragmentDirections.actionHomeFragmentToHomeSecondFragment("From PhotosFragment $position")
-        val action = PhotosFragmentDirections.actionHomeFragmentToDashboardFragment(position)
+        val action = PhotosFragmentDirections.actionHomeFragmentToDashboardFragment(position,photos)
         NavHostFragment.findNavController(this@PhotosFragment).navigate(action,extras)
     }
 

@@ -35,24 +35,14 @@ class PhotosAdapter(var onItemClickListener: OnItemClickListener) : RecyclerView
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as ImageGridViewHolder).bind(listOfPhotos[position],position){view->
-            onItemClickListener.getItemImage(view,position)
+            onItemClickListener.getItemImage(view,listOfPhotos[position],position)
         }
     }
 
     class ImageGridViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         fun bind(photo: Photos, position: Int, onItemClick: (view:View) -> Unit){
             itemView.imageView.loadImage(photo.url)
-//            GlideApp.with(itemView).load(photo.url).transition(withCrossFade(drawableCrossFadeFactory))
-//                .listener(object : RequestListener<Drawable> {
-//                    override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean): Boolean {
-//                        Log.e("ImageGridViewHolder","onLoadFailed ${e?.message}")
-//                        return e?.message.isNullOrEmpty()
-//                    }
-//                    override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
-//                        return false
-//                    }
-//                })
-//                .into(itemView.imageView)
+            itemView.textViewTitle.text = photo.title
             itemView.container.setOnClickListener {
                 ViewCompat.setTransitionName(itemView.imageView, "title_${position}")
                 onItemClick.invoke(itemView.imageView)

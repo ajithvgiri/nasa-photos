@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="200dp">
+    android:layout_height="@dimen/dimen_grid_item_height">
+
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:alpha="0.5"
+        android:background="@color/colorBlack"
+        android:maxLines="1"
+        android:padding="4dp"
+        android:textColor="@android:color/primary_text_dark"
+        android:textSize="12sp" />
 </FrameLayout>
