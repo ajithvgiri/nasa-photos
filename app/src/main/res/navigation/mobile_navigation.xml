@@ -17,7 +17,15 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_HomeFragment_to_DashboardFragment"
+            app:destination="@id/navigation_photo_fullscreen"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/navigation_home_second"
@@ -34,9 +42,13 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.ajithvgiri.nasa.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_photo_fullscreen"
+        android:name="com.ajithvgiri.nasa.ui.fullscreen.PhotoFullScreenFragment"
+        tools:layout="@layout/fragment_photo_fullscreen">
+
+        <argument
+            android:name="image_position"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>

@@ -12,6 +12,7 @@ import com.ajithvgiri.nasa.data.model.Photos
 import com.ajithvgiri.nasa.ui.home.OnItemClickListener
 import com.ajithvgiri.nasa.utils.GlideApp
 import com.ajithvgiri.nasa.utils.NasaGlideModule.Companion.drawableCrossFadeFactory
+import com.ajithvgiri.nasa.utils.loadImage
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
@@ -40,19 +41,18 @@ class PhotosAdapter(var onItemClickListener: OnItemClickListener) : RecyclerView
 
     class ImageGridViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         fun bind(photo: Photos, position: Int, onItemClick: (view:View) -> Unit){
-            GlideApp.with(itemView).load(photo.url).transition(withCrossFade(drawableCrossFadeFactory))
-                .listener(object : RequestListener<Drawable> {
-                    override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean): Boolean {
-                        Log.e("ImageGridViewHolder","onLoadFailed ${e?.message}")
-                        return e?.message.isNullOrEmpty()
-                    }
-                    override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
-                        //do something when picture already loaded
-                        itemView.progress.visibility = View.GONE
-                        return false
-                    }
-                })
-                .into(itemView.imageView)
+            itemView.imageView.loadImage(photo.url)
+//            GlideApp.with(itemView).load(photo.url).transition(withCrossFade(drawableCrossFadeFactory))
+//                .listener(object : RequestListener<Drawable> {
+//                    override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean): Boolean {
+//                        Log.e("ImageGridViewHolder","onLoadFailed ${e?.message}")
+//                        return e?.message.isNullOrEmpty()
+//                    }
+//                    override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
+//                        return false
+//                    }
+//                })
+//                .into(itemView.imageView)
             itemView.container.setOnClickListener {
                 ViewCompat.setTransitionName(itemView.imageView, "title_${position}")
                 onItemClick.invoke(itemView.imageView)
@@ -62,6 +62,7 @@ class PhotosAdapter(var onItemClickListener: OnItemClickListener) : RecyclerView
 
     // helper function for adding images to listOfPhotos
     fun addPhotos(listOfPhotos: List<Photos>){
+        this.listOfPhotos.clear()
         val position = listOfPhotos.size
         listOfPhotos.forEach {
             this.listOfPhotos.add(it)
