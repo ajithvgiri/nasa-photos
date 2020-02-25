@@ -34,6 +34,12 @@ android {
     kapt {
         correctErrorTypes = true
     }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -52,7 +58,16 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
 
     implementation 'com.squareup.moshi:moshi-kotlin:1.9.2'
+    androidTestImplementation 'androidx.test:rules:1.3.0-alpha04'
     kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.9.2'
+
+    implementation 'com.github.bumptech.glide:okhttp3-integration:4.11.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
+
+    implementation 'com.github.ajithvgiri:photoviewer:v1.2'
+
 }
