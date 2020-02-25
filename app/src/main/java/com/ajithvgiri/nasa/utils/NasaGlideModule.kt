@@ -1,9 +1,7 @@
 package com.ajithvgiri.nasa.utils
 
 import android.content.Context
-
 import android.graphics.Bitmap
-import androidx.annotation.NonNull
 import com.bumptech.glide.Glide
 import com.bumptech.glide.GlideBuilder
 import com.bumptech.glide.Registry
@@ -18,10 +16,10 @@ import com.bumptech.glide.module.AppGlideModule
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
+import com.bumptech.glide.request.transition.DrawableCrossFadeFactory.Builder
 import com.bumptech.glide.signature.ObjectKey
 import okhttp3.OkHttpClient
 import java.io.InputStream
-import com.bumptech.glide.request.transition.DrawableCrossFadeFactory.Builder
 import java.util.concurrent.TimeUnit
 
 

@@ -1,7 +1,5 @@
 package com.ajithvgiri.nasa.adapter
 
-import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,17 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ajithvgiri.nasa.R
 import com.ajithvgiri.nasa.data.model.Photos
 import com.ajithvgiri.nasa.ui.home.OnItemClickListener
-import com.ajithvgiri.nasa.utils.GlideApp
-import com.ajithvgiri.nasa.utils.NasaGlideModule.Companion.drawableCrossFadeFactory
 import com.ajithvgiri.nasa.utils.loadImage
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
 import kotlinx.android.synthetic.main.layout_grid_item_photo.view.*
 
-class PhotosAdapter(var onItemClickListener: OnItemClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class PhotosAdapter(private var onItemClickListener: OnItemClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     //array list of photos from Nasa
     private var listOfPhotos = ArrayList<Photos>()

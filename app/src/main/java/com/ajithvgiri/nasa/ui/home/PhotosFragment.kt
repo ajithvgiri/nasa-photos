@@ -13,7 +13,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ajithvgiri.nasa.R
 import com.ajithvgiri.nasa.adapter.PhotosAdapter
-import com.ajithvgiri.nasa.data.model.Photos
 import kotlinx.android.synthetic.main.fragment_photos.*
 
 class PhotosFragment : Fragment(),OnItemClickListener {

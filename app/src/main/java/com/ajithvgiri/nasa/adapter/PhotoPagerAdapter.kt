@@ -3,7 +3,6 @@ package com.ajithvgiri.nasa.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.ajithvgiri.nasa.R
 import com.ajithvgiri.nasa.data.model.Photos
